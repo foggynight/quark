@@ -1,8 +1,10 @@
-# Copyright (C) 2020 Robert Coffey
+# Copyright (C) 2020-2021 Robert Coffey
 # Released under the GPLv2 license
 
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.16.0)
 project(QUARK_PROJECT C)
+
+include_directories(inc)
 
 add_executable(quark src/main.c)
 
