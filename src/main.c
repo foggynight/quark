@@ -1,5 +1,5 @@
 /* --- quark ---
- * Copyright (C) 2020 Robert Coffey
+ * Copyright (C) 2020-2021 Robert Coffey
  * Released under the GPLv2 license */
 
 #include <stdlib.h>
@@ -23,6 +23,13 @@ int main(void)
 
     while (!glfwWindowShouldClose(win)) {
         glClear(GL_COLOR_BUFFER_BIT);
+
+        glBegin(GL_TRIANGLES);
+        glVertex2f(-0.5f, -0.5f);
+        glVertex2f( 0.0f,  0.5f);
+        glVertex2f( 0.5f, -0.5f);
+        glEnd();
+
         glfwSwapBuffers(win);
         glfwPollEvents();
     }
