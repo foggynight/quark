@@ -1,4 +1,4 @@
-/* --- quark ---
+/* main.c - v0.0.0
  * Copyright (C) 2020-2021 Robert Coffey
  * Released under the GPLv2 license */
 
@@ -13,7 +13,7 @@ int main(void)
     if (!glfwInit())
         return EXIT_FAILURE;
 
-    win = glfwCreateWindow(640, 480, "Hello, World.", NULL, NULL);
+    win = glfwCreateWindow(640, 480, "QUARK", NULL, NULL);
     if (!win) {
         glfwTerminate();
         return EXIT_FAILURE;

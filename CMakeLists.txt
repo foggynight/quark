@@ -6,10 +6,10 @@ project(QUARK_PROJECT C)
 
 include_directories(inc)
 
-add_executable(quark src/main.c)
+add_executable(QUARK src/main.c)
 
 find_package(glfw3 3.3 REQUIRED)
-target_link_libraries(quark glfw)
+target_link_libraries(QUARK glfw)
 
 find_package(OpenGL REQUIRED)
-target_link_libraries(quark OpenGL::GL)
+target_link_libraries(QUARK OpenGL::GL)
