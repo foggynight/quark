@@ -29,14 +29,24 @@ int main(void)
         rtb_elogf("Failed to initialize GLEW: %s\n", glewGetErrorString(err));
     rtb_logf("OpenGL version: %s\n", glGetString(GL_VERSION));
 
+    float pos_arr[] = {
+        -0.5f, -0.5f,
+         0.0f,  0.5f,
+         0.5f, -0.5f
+    };
+
+    unsigned int buf_id;
+    glGenBuffers(1, &buf_id);
+    glBindBuffer(GL_ARRAY_BUFFER, buf_id);
+    glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), pos_arr, GL_STATIC_DRAW);
+
+    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), 0);
+
     while (!glfwWindowShouldClose(win)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glBegin(GL_TRIANGLES);
-        glVertex2f(-0.5f, -0.5f);
-        glVertex2f( 0.0f,  0.5f);
-        glVertex2f( 0.5f, -0.5f);
-        glEnd();
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         glfwSwapBuffers(win);
         glfwPollEvents();
