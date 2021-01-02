@@ -49,21 +49,29 @@ int main()
     rtb_logf("OpenGL version: %s\n", glGetString(GL_VERSION));
 
     float pos_arr[] = {
-        -0.5f, -0.5f,
-         0.0f,  0.5f,
-         0.5f, -0.5f,
-        -0.9f, -0.5f,
-         0.0f,  0.1f,
-         0.9f, -0.5f
+         0.5,  0.5, // Top-right
+         0.5, -0.5, // Bottom-right
+        -0.5, -0.5, // Bottom-left
+        -0.5,  0.5  // Top-left
     };
 
-    unsigned int buf_id;
-    glGenBuffers(1, &buf_id);
-    glBindBuffer(GL_ARRAY_BUFFER, buf_id);
+    unsigned int ind_arr[] = {
+        0, 1, 2,
+        2, 3, 0
+    };
+
+    unsigned int vertex_bid;
+    glGenBuffers(1, &vertex_bid);
+    glBindBuffer(GL_ARRAY_BUFFER, vertex_bid);
     glBufferData(GL_ARRAY_BUFFER, sizeof pos_arr, pos_arr, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
+
+    unsigned int index_bid;
+    glGenBuffers(1, &index_bid);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, index_bid);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof ind_arr, ind_arr, GL_STATIC_DRAW);
 
     std::string vertex_shader;
     std::string fragment_shader;
@@ -75,7 +83,7 @@ int main()
     while (!glfwWindowShouldClose(win)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawArrays(GL_TRIANGLES, 0, sizeof pos_arr / sizeof(float) / 2);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
         glfwSwapBuffers(win);
         glfwPollEvents();
