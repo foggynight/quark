@@ -40,16 +40,19 @@ int main()
     float pos_arr[] = {
         -0.5f, -0.5f,
          0.0f,  0.5f,
-         0.5f, -0.5f
+         0.5f, -0.5f,
+        -0.9f, -0.5f,
+         0.0f,  0.1f,
+         0.9f, -0.5f
     };
 
     unsigned int buf_id;
     glGenBuffers(1, &buf_id);
     glBindBuffer(GL_ARRAY_BUFFER, buf_id);
-    glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), pos_arr, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof pos_arr, pos_arr, GL_STATIC_DRAW);
 
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), nullptr);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
 
     std::string vertex_shader =
             "#version 330 core\n"
@@ -71,7 +74,7 @@ int main()
     while (!glfwWindowShouldClose(win)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawArrays(GL_TRIANGLES, 0, sizeof pos_arr / sizeof(float) / 2);
 
         glfwSwapBuffers(win);
         glfwPollEvents();
