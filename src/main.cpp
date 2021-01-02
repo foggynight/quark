@@ -2,6 +2,8 @@
  * Copyright (C) 2020-2021 Robert Coffey
  * Released under the GPLv2 license */
 
+// TODO: Error handling using glDebugMessageCallback
+
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -56,8 +58,8 @@ int main()
     };
 
     unsigned int ind_arr[] = {
-        0, 1, 2,
-        2, 3, 0
+        0, 1, 2, // Bottom-right triangle
+        2, 3, 0  // Top-left triangle
     };
 
     unsigned int vertex_bid;
