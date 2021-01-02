@@ -4,7 +4,10 @@
 
 #include <stdlib.h>
 
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
+#include <rtb_log.h>
 
 int main(void)
 {
@@ -20,6 +23,10 @@ int main(void)
     }
 
     glfwMakeContextCurrent(win);
+
+    GLenum err = glewInit();
+    if (GLEW_OK != err)
+        rtb_elogf("Failed to initialize GLEW: %s\n", glewGetErrorString(err));
 
     while (!glfwWindowShouldClose(win)) {
         glClear(GL_COLOR_BUFFER_BIT);
