@@ -27,6 +27,7 @@ int main(void)
     GLenum err = glewInit();
     if (GLEW_OK != err)
         rtb_elogf("Failed to initialize GLEW: %s\n", glewGetErrorString(err));
+    rtb_logf("OpenGL version: %s\n", glGetString(GL_VERSION));
 
     while (!glfwWindowShouldClose(win)) {
         glClear(GL_COLOR_BUFFER_BIT);
