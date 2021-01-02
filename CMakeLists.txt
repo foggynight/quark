@@ -2,11 +2,11 @@
 # Released under the GPLv2 license
 
 cmake_minimum_required(VERSION 3.16.0)
-project(QUARK_PROJECT C)
+project(QUARK_PROJECT CXX)
 
 include_directories(inc dep/rtb/inc)
 
-add_executable(QUARK src/main.c)
+add_executable(QUARK src/main.cpp)
 
 find_package(GLEW REQUIRED)
 target_link_libraries(QUARK GLEW::GLEW)
