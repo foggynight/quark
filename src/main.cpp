@@ -11,7 +11,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include <rtb_log.h>
+#include <rtb/log.h>
 
 #define SHADER_SOURCE_PATH "../res/shader/basic.shader"
 
