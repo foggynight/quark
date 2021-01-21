@@ -1,4 +1,4 @@
-/* main.cpp - v0.0.0
+/* main.cpp
  * Copyright (C) 2020-2021 Robert Coffey
  * Released under the GPLv2 license */
 
